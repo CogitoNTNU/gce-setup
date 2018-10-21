@@ -1,5 +1,6 @@
 import os
 import sys
+from mail import get_users
 
 try:
     from local_settings import PROJECT
@@ -40,6 +41,9 @@ def generate_script_and_keys(n=3):
     if 'groups' in os.listdir('.'):
         return print('Please remove old "groups" folder before running this command')
 
+    if len(get_users()) > n:
+        return print('Please create more VMs than amount of users')
+
     template = get_template()
     keys = get_keys(n)
     command = ' & '.join(
@@ -58,6 +62,8 @@ def generate_script_and_keys(n=3):
     for ip in get_ips():
         gid = ''.join([a for a in ip[0] if a.isnumeric()])
         os.system('touch groups/%s/%s' % ip)
+        with open('groups/%s/ip.txt' % ip[0], 'w') as f:
+            f.write(str(ip[1]))
         with open('groups/%s/ssh.sh' % ip[0], 'w') as f:
             f.write('ssh -i key-%s user@%s' % (gid, ip[1]))
         os.system('chmod +x groups/%s/ssh.sh' % ip[0])

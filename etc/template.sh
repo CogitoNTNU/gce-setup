@@ -6,5 +6,5 @@ gcloud compute instances create cogito-%(id)s \
 --metadata='install-nvidia-driver=True,ssh-keys=%(user)s:%(key)s' \
 --maintenance-policy=TERMINATE \
 --machine-type='n1-highmem-4' \
---accelerator='nvidia-tesla-p100,count=1' \
+--accelerator='type=nvidia-tesla-p100,count=1' \
 --tags='http-server,https-server,tcp-all'

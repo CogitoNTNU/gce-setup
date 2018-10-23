@@ -7,4 +7,6 @@ gcloud compute instances create cogito-%(id)s \
 --maintenance-policy=TERMINATE \
 --machine-type='n1-highmem-4' \
 --accelerator='type=nvidia-tesla-p100,count=1' \
+--boot-disk-size=256GB \
+--boot-disk-type=pd-ssd \
 --tags='http-server,https-server,tcp-all'

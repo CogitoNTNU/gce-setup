@@ -30,7 +30,7 @@ def send_login():
         message = \
 """\
 Windows users:
-  Follow instructions here: <TODO: link here>
+  Follow instructions here: https://dev.cogito-ntnu.no/putty.pdf
 
 Mac / Linux users:
   Open terminal
@@ -38,12 +38,12 @@ Mac / Linux users:
   Copy the key below and paste it in the terminal window (including ---BEGIN--- and ---END--- lines)
   Press CTRL + X then Y then ENTER
   Write 'chmod 600 key.txt' and press ENTER
-  Write 'ssh -i key.txt user@%s'
+  Write 'ssh -i key.txt user@%s' and press ENTER
 
 Start a jupyter notebook:
   Connect to the VM
   Write 'jupyter notebook --ip 0.0.0.0' and press ENTER
-  Copy the url and replace '(...)' with '%s'
+  Copy the url and replace '(... or ...)' with '%s'
   Paste it in a web browser and press ENTER
 
 VM: cogito-%r

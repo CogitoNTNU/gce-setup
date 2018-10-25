@@ -29,14 +29,28 @@ def send_login():
             key = f.read().strip()
         message = \
 """\
-ssh -i <key-file> user@%s
-jupyter notebook --ip 0.0.0.0
+Windows users:
+  Follow instructions here: <TODO: link here>
+
+Mac / Linux users:
+  Open terminal
+  Write 'nano key.txt' and press ENTER
+  Copy the key below and paste it in the terminal window (including ---BEGIN--- and ---END--- lines)
+  Press CTRL + X then Y then ENTER
+  Write 'chmod 600 key.txt' and press ENTER
+  Write 'ssh -i key.txt user@%s'
+
+Start a jupyter notebook:
+  Connect to the VM
+  Write 'jupyter notebook --ip 0.0.0.0' and press ENTER
+  Copy the url and replace '(...)' with '%s'
+  Paste it in a web browser and press ENTER
 
 VM: cogito-%r
 IP: %s
 KEY:
 %s
-""" % (ip, gid, ip, key)
+""" % (ip, ip, gid, ip, key)
         mails.append((user, message))
 
     send_mails(mails)
